@@ -19,7 +19,7 @@ func INoteCreate(c *gin.Context) {
 	var body struct {
 		Title   string `json:"title"`
 		Body    string `json:"body"`
-		FileUrl string `json:"file_url"`
+		FileUrl string `json:"fileUrl"`
 		Type    string `json:"type"`
 	}
 	if err := c.BindJSON(&body); err != nil {
@@ -66,7 +66,7 @@ func INoteFindAll(c *gin.Context) {
 
 	// return json
 	c.JSON(http.StatusAccepted, gin.H{
-		"i_notes": iNotes,
+		"iNotes": iNotes,
 	})
 }
 
@@ -94,11 +94,12 @@ func INoteFindById(c *gin.Context) {
 
 	// return json
 	c.JSON(http.StatusAccepted, gin.H{
-		"i_note": iNote,
+		"iNote": iNote,
 	})
 }
 
 func INoteUpdate(c *gin.Context) {
+
 	// get user from auth
 	var reqUser, _ = c.Get("user")
 	user := reqUser.(*models.User)
@@ -110,7 +111,7 @@ func INoteUpdate(c *gin.Context) {
 	var body struct {
 		Title   string `json:"title"`
 		Body    string `json:"body"`
-		FileUrl string `json:"file_url"`
+		FileUrl string `json:"fileUrl"`
 		Type    string `json:"type"`
 	}
 	if err := c.BindJSON(&body); err != nil {
